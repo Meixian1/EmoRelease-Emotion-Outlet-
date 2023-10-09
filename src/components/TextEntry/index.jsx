@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TextAnalysisReport from "../TextAnalysisReport";
 
@@ -17,8 +17,6 @@ const TextEntry = () => {
     setTextEntered(e.target.value);
   };
 
-  const API_URL = "https://twinword-sentiment-analysis.p.rapidapi.com/analyze/";
-
   const analyzeText = async () => {
     const sentences = textEntered.split(new RegExp(sentenceEndings.join("|")));
 
@@ -28,7 +26,7 @@ const TextEntry = () => {
       } else {
         const options = {
           method: "GET",
-          url: API_URL,
+          url: "https://twinword-sentiment-analysis.p.rapidapi.com/analyze/",
           params: {
             text: sentence,
           },
@@ -82,11 +80,15 @@ const TextEntry = () => {
     return { positive: positiveTotal, negative: negativeTotal, neutral: neutralTotal };
   };
 
+  useEffect(() => {
+    analyzeText(); // Trigger analyzeText when textEntered or sentenceEndings change
+  }, [textEntered, sentenceEndings]); // Specify the dependencies that trigger this effect
+
   const negativeSentences = sentenceSentiments
-  .filter((sentence) => sentence.type === "negative")
-  .map((sentence, index) => (
-    <li key={index}>Sentence {index + 1}: {sentence.text}</li> // Use index as a key to avoid duplication
-  ));
+    .filter((sentence) => sentence.type === "negative")
+    .map((sentence, index) => (
+      <li key={index}>Sentence {index + 1}: {sentence.text}</li> // Use index as a key to avoid duplication
+    ));
 
   return (
     <div>
@@ -100,12 +102,10 @@ const TextEntry = () => {
           ></textarea>
         </label>
         <br />
-        <button className="button1" type="button" onClick={analyzeText} >
+        <button className="button1" type="button" onClick={analyzeText}>
           Analyze Text
         </button>
-       
       </form>
-    
     </div>
   );
 };

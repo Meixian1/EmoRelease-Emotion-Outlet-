@@ -26,8 +26,6 @@ function App() {
           setTextEntered={setTextEntered}
           sentenceSentiments={sentenceSentiments}
           setSentenceSentiments={setSentenceSentiments}
-          sentimentTotals={sentenceSentiments}
-          setSentimentTotals={setSentimentTotals}
         />
         </div>
        <div className="sentimentAnalysis" >
@@ -35,7 +33,7 @@ function App() {
           sentimentTotals={sentimentTotals} setSentimentTotals={setSentimentTotals}  />
       </div>
       </div>
-      <div>
+      {/* <div>
       <ReframeSession/>
       </div>
       <div>
@@ -43,7 +41,7 @@ function App() {
       </div>
       <div>
       <Footer/>
-      </div>
+      </div> */}
     </div>
   );
 }

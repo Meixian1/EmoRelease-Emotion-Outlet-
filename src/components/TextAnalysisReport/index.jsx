@@ -1,7 +1,7 @@
 import React from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
-const TextAnalysisReport = ({ sentimentTotals }) => {
+const TextAnalysisReport = ({sentimentTotals }) => {
   // Check if sentimentTotals is undefined (or falsy) to prevent rendering errors
   if (!sentimentTotals) {
     return null;
