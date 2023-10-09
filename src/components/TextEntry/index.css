@@ -1,0 +1,74 @@
+/* // useEffect(() => {
+    //   // Define a regular expression to split sentences
+    //   const sentenceEndings = ["\\.", "\\?", "\\!", "\\.'", "\\?'", "\\!'"];
+  
+    //   // Split the input text into sentences based on sentence-ending punctuation marks
+    //   const sentences = textEntered.split(sentenceEndings);
+    // 
+  
+    //   const analyzeSentiments = async () => {
+    //     const sentimentPromises = sentences.map(async (sentence) => {
+    //       if (sentence.trim() === "") {
+    //         return null; // Skip empty sentences
+    //       }
+  
+    //       try {
+    //         const requestUrl = `${PROXY_URL}${API_URL}`;
+    //         const requestData = { text: sentence };
+    //         const response = await axios.post(
+    //           requestUrl,
+    //           requestData,
+    //           {
+    //             headers: {
+    //               "X-Twaip-Key": "653a490034mshe9e183172034f8ep134075jsn8d07de363aa5", // Replace with your Twinword API key
+    //               "access-control-allow-credentials": "true",
+    //               "access-control-allow-origin": "*", // You can set this to the specific origin you want to allow
+    //               "X-RapidAPI-Host": "twinword-sentiment-analysis.p.rapidapi.com",
+    //             },
+    //           }
+    //         );
+    //         const { score, type } = response.data.sentiment;
+    //         return { score, type, text: sentence }; // Include the original text in the sentiment object
+    //       } catch (error) {
+    //         console.error("Error fetching sentiment analysis:", error);
+    //         return { score: "Error", type: "Error", text: sentence };
+    //       }
+    //     });
+  
+    //     const sentiments = await Promise.all(sentimentPromises);
+    //     setSentenceSentiments(sentiments.filter((sentiment) => sentiment !== null));
+    //   };
+  
+    //   analyzeSentiments();
+    // }, [textEntered, setSentenceSentiments]);
+  
+    // useEffect(() => {
+    //   // Calculate the total counts for each sentiment
+    //   const totals = sentenceSentiments.reduce(
+    //     (count, sentiment) => {
+    //       if (sentiment.type === "positive") {
+    //         count.positive++;
+    //       } else if (sentiment.type === "negative") {
+    //         count.negative++;
+    //       } else if (sentiment.type === "neutral") {
+    //         count.neutral++;
+    //       }
+    //       return count;
+    //     },
+    //     { positive: 0, negative: 0, neutral: 0 }
+    //   );
+  
+    //   setSentimentTotals(totals);
+    // }, [sentenceSentiments, setSentimentTotals]);
+  
+    // useEffect(() => {
+    //   const extractNegativeSentences = () => {
+    //     const negativeSentences = sentenceSentiments
+    //       .filter((sentiment) => sentiment.type === "negative")
+    //       .map((sentiment) => sentiment.text);
+  
+    //     setNegativeSentiments(negativeSentences);
+    //   };
+  
+    //   extractNegativeSentences();
+    // }, [sentenceSentiments]); */
