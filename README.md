@@ -6,16 +6,17 @@ The EmoRelease App is created to help people release their emotions and reset th
 
 Usage Instructions: 
 -
-Step 1. Enter Your Journal for Sentiment Analysis. Click Analyze Text to Display Result in Bar Chart. Continue if Step 2 is activated. 
-Step 2. Reframe or Paraphrase the Negative, Destructive Sentences into Positive, Constructive sentences. Click Submit to Activate Step 3.
-Step 3. Enter Text to Generate An Image that Represents Your Current Emotion State. Click to View Image. 
+-Steps: 
+-Step 1. Enter Your Journal for Sentiment Analysis. Click Analyze Text to Display Result in Bar Chart. Continue if Step 2 is activated. 
+-Step 2. Reframe or Paraphrase the Negative, Destructive Sentences into Positive, Constructive sentences. Click Submit to Activate Step 3.
+-Step 3. Enter Text to Generate An Image that Represents Your Current Emotion State. Click to View Image. 
         
 Technologies Used: A list of all technologies, libraries, APIs, etc. 
 -
 - Import React Library
 - Install and Import Axios
 - Install recharts and import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts"
-- APIs from RapidAPI: 
+- APIs from RapidAPI:
    - Sentiment Analysis: https://rapidapi.com/twinword/api/sentiment-analysis/
    - Image Process-Text to Image from OpenAI: https://rapidapi.com/rphrp1985/api/open-ai21/
  - React Developer Tools Extension (displaying web app on Microsoft Edge explorer)
