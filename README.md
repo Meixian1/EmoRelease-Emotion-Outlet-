@@ -1,6 +1,6 @@
 # React + Vite
 
-Check the main README.md file here: 
+Check the main README.md file here: https://github.com/Meixian1/EmoReleaseProject/blob/main/README.md
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
