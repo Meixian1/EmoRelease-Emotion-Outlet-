@@ -2,8 +2,7 @@
 
 Introduction: 
 -
-The EmoRelease App is created to help people release their emotions and reset their emotions and mindsets from a negative to a positive state. The overall goal is to help improve people's well being and to become a better version of themselves. 
-
+The EmoRelease App is created to help people release their emotions and transform their emotions and mindsets from a negative to a positive state. The ultimate goal is to help manage and improve people's emotional well-being by transforming negative emotions and mindsets into positive ones as well as to empower individuals to become the best versions of themselves.
 
 ![image](https://github.com/Meixian1/EmoReleaseProject/assets/124223514/c74a566b-dba6-45b9-aa4b-d26e1c8448ce)
 ![image](https://github.com/Meixian1/EmoReleaseProject/assets/124223514/8d6197de-e91b-4b55-ac72-ce23a8870c2d)
