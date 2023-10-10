@@ -28,7 +28,7 @@ Technologies Used: A list of all technologies, libraries, APIs, etc.
 - APIs from RapidAPI:
    - Sentiment Analysis: https://rapidapi.com/twinword/api/sentiment-analysis/
    - Image Process-Text to Image from OpenAI: https://rapidapi.com/rphrp1985/api/open-ai21/
- - React Developer Tools Extension (displaying web app on Microsoft Edge explorer)
+ - Visual Studio Code, React Developer Tools Extension (displaying web app on Microsoft Edge explorer), GitHub, and Render for developing the Web App. 
      
 Getting Started: Info on how to clone and start the app and link to the deployed app on GitHub Pages/Render.
 - 
