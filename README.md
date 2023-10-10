@@ -58,6 +58,7 @@ Unsolved Problems: List any unsolved issues.
 - JS code for visual count indication on Bar Chart. 
 - Limited API reqeusts avaiable based on free pricing.
 - Some images generated from the API are not that great and low quality.
+- Prevent data lost on page refresh and use local storage storing the data on the browser. 
 
 Future Enhancements: Identify future features and enhancements planned for the project.
 -
@@ -66,8 +67,11 @@ Future Enhancements: Identify future features and enhancements planned for the p
 - Improve the accuracy of the API algorithm for the API data fetching and speed-up or shorten the response time.
 - Improve accuracy of the JS detecting and filtering sentences correctly.
 - Improve CSS design for the overall App.
+- Implement social media icons for sharing the App and the generated images. 
 - Improve code readability and organization
 - Simplify the codes.
+- Include a congratulation message on successfully completing the EmoRelease Session.
+- Implement export function to save the reports. 
 
 Have a link to your hosted working app
 -
