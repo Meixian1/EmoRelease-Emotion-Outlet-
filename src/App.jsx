@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import TextEntry from './components/TextEntry';
@@ -6,15 +6,20 @@ import TextAnalysisReport from './components/TextAnalysisReport';
 import ReframeSession from './components/ReframeSession';
 import ImageGenerator from './components/ImageGenerator';
 import Footer from './components/Footer';
+import { mainContext } from './context/MainProvider';
 
 function App() {
-  const [textEntered, setTextEntered] = useState("");
-  const [sentenceSentiments, setSentenceSentiments] = useState([]);
-  const [sentimentTotals, setSentimentTotals] = useState({
-    positive: 0,
-    negative: 0,
-    neutral: 0,
-  });
+  // const [textEntered, setTextEntered] = useState("");
+  // const [sentenceSentiments, setSentenceSentiments] = useState([]);
+  // const [sentimentTotals, setSentimentTotals] = useState({
+  //   positive: 0,
+  //   negative: 0,
+  //   neutral: 0,
+  // });
+
+  const {textEntered, setTextEntered, sentenceSentiments, setSentenceSentiments, 
+    sentimentTotals, setSentimentTotals} = useContext(mainContext)
+
   const [showImageGenerator, setShowImageGenerator] = useState(false); // State to control ImageGenerator visibility
   const [negativeSentences, setNegativeSentences] = useState([]); // State to store negative sentences
 
