@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 const TextAnalysisReport = ({sentimentTotals }) => {
@@ -21,17 +22,16 @@ const TextAnalysisReport = ({sentimentTotals }) => {
     <div>
       <h1 className="textDisplayTitle">Emotion Text Sentiment Analysis Report</h1>
       <BarChart
-        width={1000}
-        height={900}
+        width={1200}
+        height={1000}
         data={data}
-        margin={{ top: 20, right: 20, left: 20, bottom: 50 }}
+        margin={{ top: 20, right: 10, left: 10, bottom: 50 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
-        
-        <Legend/>
+        <Legend />
         <Bar dataKey="value" fill="#8884d8" />
       </BarChart>
     </div>

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import TextAnalysisReport from "../TextAnalysisReport";
 
-const TextEntry = () => {
+const TextEntry = ({ onNegativeSentencesChange }) => {
   const [textEntered, setTextEntered] = useState("");
   const [sentenceSentiments, setSentenceSentiments] = useState([]);
   const [sentimentTotals, setSentimentTotals] = useState({
@@ -38,15 +38,14 @@ const TextEntry = () => {
 
         try {
           const response = await axios(options);
-          let score, type;
 
-          if (response.data && response.data.sentence) {
-            ({ score, type } = response.data.sentence);
+          if (response.data && response.data.hasOwnProperty("type") && response.data.hasOwnProperty("score")) {
+            const { type, score } = response.data;
+            return { type, score, text: sentence };
           } else {
-            console.error("Invalid API response or missing properties");
+            console.error("Invalid API response or missing properties", response.data);
+            return null;
           }
-
-          return { score, type, text: sentence };
         } catch (error) {
           console.error("Error calling the API:", error);
           return null;
@@ -54,8 +53,16 @@ const TextEntry = () => {
       }
     });
 
-    const sentiments = await Promise.all(sentimentPromises);
-    const filteredSentiments = sentiments.filter((sentiment) => sentiment !== null);
+    const resolvedPromises = await Promise.all(sentimentPromises);
+    const filteredSentiments = resolvedPromises.filter((sentiment) => sentiment !== null);
+
+    // Filter out only the sentences with negative sentiments
+    const negativeSentences = filteredSentiments
+      .filter((sentiment) => sentiment.type === "negative")
+      .map((sentiment) => sentiment.text);
+
+    // Call the callback function to pass the negative sentences
+    onNegativeSentencesChange(negativeSentences);
 
     const sentimentTotals = calculateSentimentTotals(filteredSentiments);
     setSentimentTotals(sentimentTotals);
@@ -80,21 +87,15 @@ const TextEntry = () => {
     return { positive: positiveTotal, negative: negativeTotal, neutral: neutralTotal };
   };
 
-  useEffect(() => {
-    analyzeText(); // Trigger analyzeText when textEntered or sentenceEndings change
-  }, [textEntered, sentenceEndings]); // Specify the dependencies that trigger this effect
-
-  const negativeSentences = sentenceSentiments
-    .filter((sentence) => sentence.type === "negative")
-    .map((sentence, index) => (
-      <li key={index}>Sentence {index + 1}: {sentence.text}</li> // Use index as a key to avoid duplication
-    ));
+  const handleAnalyzeClick = () => {
+    analyzeText(); // Trigger the text analysis when the button is clicked
+  };
 
   return (
-    <div>
+    <div className="textEntry-container">
       <form onSubmit={(e) => e.preventDefault()}>
         <label>
-          <h1 className="textEntryTitle1">Wildcard: Write Freely!</h1> <br />
+          <h1 className="textEntryTitle1">Step 1. Wildcard: Write Freely!</h1> <br />
           <textarea
             className="area1"
             value={textEntered}
@@ -102,10 +103,17 @@ const TextEntry = () => {
           ></textarea>
         </label>
         <br />
-        <button className="button1" type="button" onClick={analyzeText}>
+        <button className="button1" type="button" onClick={handleAnalyzeClick}>
           Analyze Text
         </button>
       </form>
+      <div className="sentimentAnalysis">
+        <TextAnalysisReport
+          sentimentTotals={sentimentTotals}
+          setSentimentTotals={setSentimentTotals}
+          onNegativeSentencesChange={onNegativeSentencesChange} // Pass the callback function
+        />
+      </div>
     </div>
   );
 };

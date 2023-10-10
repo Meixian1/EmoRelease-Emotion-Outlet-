@@ -1,84 +1,103 @@
-//text to image generation: https://rapidapi.com/omniinferapi/api/omniinfer/ 
-//generate two images: before vs. after representing the emotional state
+import React, { useState } from "react";
+import axios from "axios";
 
-import axios from 'axios';
-import React, { useState } from 'react';
+const ImageGenerator = ({ submit }) => {
+  const [text, setText] = useState("");
+  const [imageURL, setImageURL] = useState("");
+  const [openInPopup, setOpenInPopup] = useState(false);
 
-const ImageGenerator = () => {
-  const [text, setText] = useState('');
-  const [images, setImages] = useState('');
+  const handleInputChange = (e) => {
+    setText(e.target.value);
+  };
 
-  const generateImages = async () => {
+  const generateImage = async () => {
+    const encodedParams = new URLSearchParams();
+    encodedParams.set("text", text);
+
     const options = {
-      method: 'POST',
-      url: 'https://omniinfer.p.rapidapi.com/v2/txt2img',
+      method: "POST",
+      url: "https://open-ai21.p.rapidapi.com/texttoimage2",
       headers: {
-        'content-type': 'application/json',
-        'X-RapidAPI-Key': '653a490034mshe9e183172034f8ep134075jsn8d07de363aa5',
-        'X-RapidAPI-Host': 'omniinfer.p.rapidapi.com',
+        "content-type": "application/x-www-form-urlencoded",
+        "X-RapidAPI-Key": "653a490034mshe9e183172034f8ep134075jsn8d07de363aa5",
+        "X-RapidAPI-Host": "open-ai21.p.rapidapi.com",
       },
-      data: {
-        // Customize your API request parameters here
-        negative_prompt: 'YOUR_NEGATIVE_PROMPT',
-        sampler_name: 'Euler a',
-        batch_size: 1,
-        n_iter: 1,
-        steps: 20,
-        cfg_scale: 7,
-        seed: -1,
-        height: 400, // Set the desired height
-        width: 600, // Set the desired width
-        model_name: 'meinamix_meinaV9.safetensors',
-        prompt: text, // Use the input text as the prompt
-      },
+      data: encodedParams,
     };
 
     try {
       const response = await axios.request(options);
-      setImages(response.data.image_url);
+      if (response.data && response.data.url) {
+        setImageURL(response.data.url);
+      } else {
+        console.error("Invalid API response:", response.data);
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Error calling the API:", error);
     }
   };
 
+  const toggleView = () => {
+    setOpenInPopup(!openInPopup);
+  };
+
   return (
-    <div className='image-container'>
+    <div className="image-container">
       <div>
-      <form className="form3" onSubmit={(e) => e.preventDefault()}>
-      <label>
-      <h1 className='imageRepTitle'>Create Image to Represent Your Current Emotion</h1>
-      <textarea
-        className="area3"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Enter text for image generation">
-        </textarea>
-        </label>
-      <br></br>
-      <button className='button3' onClick={generateImages}>Submit to Generate Images</button>
-      </form>
+        <form className="form3" onSubmit={(e) => e.preventDefault()}>
+          <label>
+            <h1 className="imageTextTitle">
+             Step 3. Create Image to Represent Your Current Emotion State
+            </h1>
+            <textarea
+              className="area3"
+              value={text}
+              onChange={handleInputChange}
+              placeholder="Enter text for image generation"
+            ></textarea>
+          </label>
+          <br />
+          <button className="button3" onClick={generateImage}>
+            Submit to Generate Images
+          </button>
+        </form>
       </div>
 
       <div>
-      <div>
-      <h1 className='imageTitle'>AI Generated Image Display</h1>
-      </div >
-      <div className='imageDisplay'>
-      {images && (
-        <img
-          src={images}
-          alt="Generated Image"
-          style={{
-            width: '400px', // Set the width to your desired size
-            height: '300px', // Set the height to your desired size
-          }}
-        />
-      )}
+        <div>
+          <h1 className="imageTitle">Generated Image Display</h1>
+        </div>
+
+        <div className="imageDisplay">
+          {submit === "done" && imageURL && (
+            <>
+              {openInPopup ? (
+                <a
+                  href={imageURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open in Popup
+                </a>
+              ) : (
+                <img
+                  src={imageURL}
+                  alt="Generated Image"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+              )}
+            </>
+          )}
+        </div>
+        <button className="toggleButton" onClick={toggleView}>
+          {openInPopup ? "View on Same Page" : "View in Popup"}
+        </button>
       </div>
-      </div>
-      </div>
+    </div>
   );
 };
 
 export default ImageGenerator;
-
