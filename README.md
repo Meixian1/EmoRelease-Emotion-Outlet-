@@ -6,6 +6,8 @@ The EmoRelease App is created to help people release their emotions and reset th
 
 
 ![image](https://github.com/Meixian1/EmoReleaseProject/assets/124223514/c74a566b-dba6-45b9-aa4b-d26e1c8448ce)
+![image](https://github.com/Meixian1/EmoReleaseProject/assets/124223514/8d6197de-e91b-4b55-ac72-ce23a8870c2d)
+![image](https://github.com/Meixian1/EmoReleaseProject/assets/124223514/b0a49857-6e23-4652-921b-ac421392eff1)
 
 
 Usage Instructions: 
