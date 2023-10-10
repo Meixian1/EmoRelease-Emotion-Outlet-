@@ -20,12 +20,11 @@ const TextAnalysisReport = ({sentimentTotals }) => {
 
   return (
     <div>
-      <h1 className="textDisplayTitle">Emotion Text Sentiment Analysis Report</h1>
       <BarChart
         width={1200}
         height={1000}
         data={data}
-        margin={{ top: 20, right: 10, left: 10, bottom: 50 }}
+        margin={{ top: 20, right: 10, left: 100, bottom: 50 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />

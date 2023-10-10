@@ -12,7 +12,7 @@ button{
   flex-direction: column;
   color: blue;
   background: linear-gradient(rgb(129, 249, 253), yellow, rgb(176, 104, 244));
-  padding: 40px;
+  padding: 100px;
   font-family: cursive;
   font-size: 120px;
   margin-top: 1px;
@@ -23,17 +23,19 @@ button{
 
 .instructions{
   display:flex;
-  flex-direction: column;
-  color: blue;
-  background-color: rgb(253, 253, 138);
-  padding: 40px;
+  /* flex-direction: row; */
+  color: black;
+  background-color: rgb(252, 249, 152);
+  /* padding: 20px; */
   font-family: cursive;
   font-size: 60px;
-  margin-top: 1px;
+  /* margin-top: 3%; */
   align-content: center;
   justify-content: center; /* Horizontal centering */
   align-items: center; /* Vertical centering */
+
 }
+
 
 /* CSS for TextEntry component */
 
@@ -93,12 +95,12 @@ font-size: 90px;
 /* Additional styles for TextAnalysis component textarea */
 
 .textDisplayTitle{ 
-  margin-bottom: 100px;
+  margin-bottom: 10px;
   font-size: 80px;
 } 
 
 .sentimentAnalysis{
-  margin-top: 0px;
+  margin-top: 100px;
   padding: 10%;
   width: 1200px;
   height: 1000px;
@@ -146,6 +148,8 @@ font-size: 90px;
   resize: none;
   align-items: center;
 }
+
+
 
 .area2{
   width: 99.8%;

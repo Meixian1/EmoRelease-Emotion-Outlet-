@@ -108,6 +108,8 @@ const TextEntry = ({ onNegativeSentencesChange }) => {
         </button>
       </form>
       <div className="sentimentAnalysis">
+      <h1 className="textDisplayTitle">Emotion Text Sentiment Analysis Report</h1>
+      <br></br>
         <TextAnalysisReport
           sentimentTotals={sentimentTotals}
           setSentimentTotals={setSentimentTotals}
