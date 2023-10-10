@@ -34,7 +34,7 @@ Getting Started: Info on how to clone and start the app and link to the deployed
               -In the "Source" section, select the branch you want to deploy (e.g., "main" or "master").
               -Click the "Save" or "Save Changes" button. GitHub Pages will then automatically build and deploy your website or web app from the selected branch. You 
                can access your deployed site using the URL provided in the "GitHub Pages" section.
-        -Project Cloning:
+- Project Cloning:
               - git clone https://github.com/Meixian1/EmoReleaseProject.git
 
 - Render for hosting static sites of this web app.
